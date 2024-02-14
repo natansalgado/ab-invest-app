@@ -6,6 +6,7 @@ import * as actions from './actions';
 import { styles } from './styles';
 import { SignUp } from './types';
 import { RootStackParamList } from '../../types/types';
+import { Button } from '../../components/Button';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignUp'>
 
@@ -20,7 +21,7 @@ export function SignUpScreen({ navigation, route }: Props) {
     });
     const [error, setError] = useState('');
 
-    const signUp = () => {
+    const handleSignUp = () => {
         actions.signUp(data, setError, route.params?.setUserToken);
     }
 
@@ -53,9 +54,7 @@ export function SignUpScreen({ navigation, route }: Props) {
             <TextInput style={styles.input} placeholder='Senha' value={data?.password} secureTextEntry onChangeText={(t) => handleInputChange('password', t)} />
             <TextInput style={styles.input} placeholder='Confirmar Senha' value={data?.confirmPassword} secureTextEntry onChangeText={(t) => handleInputChange('confirmPassword', t)} />
 
-            <TouchableOpacity style={styles.button} onPress={signUp}>
-                <Text style={styles.buttonText}>Registrar</Text>
-            </TouchableOpacity>
+            <Button text='Entrar' onPress={handleSignUp} />
 
             <View style={styles.footer}>
                 <Text style={styles.registerText}>

@@ -6,6 +6,7 @@ import * as actions from './actions';
 import { styles } from './styles';
 import { RootStackParamList } from '../../types/types';
 import { SignIn } from './types';
+import { Button } from '../../components/Button';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>
 
@@ -22,6 +23,7 @@ export function SignInScreen({ navigation, route }: Props) {
     }
 
     const handleInputChange = (key: string, value: string) => {
+        setError("");
         setData(prev => ({
             ...prev,
             [key]: value
@@ -29,7 +31,7 @@ export function SignInScreen({ navigation, route }: Props) {
     }
 
     const handleSignIn = async () => {
-        await actions.signUp(data, setError, setUserToken)
+        await actions.signIn(data, setError, setUserToken)
     }
 
     return (
@@ -40,12 +42,10 @@ export function SignInScreen({ navigation, route }: Props) {
                 <Text style={styles.error}>{error}</Text>
             }
 
-            <TextInput style={styles.input} placeholder='Email' value={data.email} onChangeText={(t) => handleInputChange('email', t)} />
-            <TextInput style={styles.input} placeholder='Senha' value={data.password} onChangeText={(t) => handleInputChange('password', t)} />
+            <TextInput style={styles.input} placeholder='Email' value={data.email} keyboardType='email-address' onChangeText={(t) => handleInputChange('email', t)} />
+            <TextInput style={styles.input} placeholder='Senha' value={data.password} secureTextEntry onChangeText={(t) => handleInputChange('password', t)} />
 
-            <TouchableOpacity style={styles.button} onPress={handleSignIn} >
-                <Text style={styles.buttonText}>Entrar</Text>
-            </TouchableOpacity>
+            <Button text='Entrar' onPress={handleSignIn} />
 
             <View style={styles.footer}>
                 <Text style={styles.registerText}>

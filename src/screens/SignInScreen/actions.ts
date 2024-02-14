@@ -4,7 +4,7 @@ import { SignIn } from "./types";
 
 type SetString = Dispatch<SetStateAction<string>>;
 
-export const signUp = async (data: SignIn, setError: SetString, setUserToken: SetString) => {
+export const signIn = async (data: SignIn, setError: SetString, setUserToken: SetString) => {
     const { email, password } = data;
 
     if (!email) return setError("Digite um email válido")

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { themeColor } from '../HomeScreen/styles';
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,19 +17,6 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 8,
     marginVertical: 5
-  },
-  button: {
-    marginTop: 5,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    backgroundColor: "#0090ff",
-    borderWidth: 2,
-    borderRadius: 8
-  },
-  buttonText: {
-    fontSize: 20,
-    color: "#fff",
-    textAlign: 'center'
   },
   footer: {
     marginTop: 10,

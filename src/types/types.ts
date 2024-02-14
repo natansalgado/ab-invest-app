@@ -13,4 +13,11 @@ export type RootStackParamList = {
     SignIn: SetUserToken;
     SignUp: SetUserToken;
     Home: UserToken;
+    Transfer: UserToken;
+    ConfirmTransfer: {
+        senderKey: string,
+        receiverKey: string,
+        value: number,
+        userToken: string
+    }
 }

@@ -15,11 +15,16 @@ export const loadInfos = async (token: string, setToken: Dispatch<SetStateAction
             const response = await getAccount(userId, token);
             setAccountData(response.data);
         } catch (error) {
-            console.error(error);
+            setToken('')
         }
     } catch (error) {
-        setToken("");
+        setToken('');
     }
+}
 
-
+export const format = (value: number) => {
+    return `R$ ${value.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    })}`
 }

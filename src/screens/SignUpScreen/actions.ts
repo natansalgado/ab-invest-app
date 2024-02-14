@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { fetchSignUp } from "../../api/signUp";
 import { SignUp } from "./types";
+import * as sigInActions from '../SignInScreen/actions';
 
 type SetString = Dispatch<SetStateAction<string>>;
 
@@ -18,7 +19,9 @@ export const signUp = async (data: SignUp, setError: SetString, setUserToken: Se
 
         if (response.status !== 200) setError(response);
 
-        //if (response.status == 200) setUserToken()
+        if (response.status == 200) {
+            sigInActions.signIn({ email, password }, setError, setUserToken);
+        }
     } catch (error: any) {
         setError("Erro ao tentar acessar o servidor");
     }
