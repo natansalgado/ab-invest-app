@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as actions from './actions';
 
@@ -7,6 +7,10 @@ import { styles } from './styles';
 import { RootStackParamList } from '../../types/types';
 import { SignIn } from './types';
 import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { Footer } from '../../components/Footer';
+import { Title } from '../../components/Title';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>
 
@@ -36,25 +40,16 @@ export function SignInScreen({ navigation, route }: Props) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Fazer login</Text>
+            <Title text='Fazer Login'/>
 
-            {error &&
-                <Text style={styles.error}>{error}</Text>
-            }
+            {error && <ErrorMessage message={error} />}
 
-            <TextInput style={styles.input} placeholder='Email' value={data.email} keyboardType='email-address' onChangeText={(t) => handleInputChange('email', t)} />
-            <TextInput style={styles.input} placeholder='Senha' value={data.password} secureTextEntry onChangeText={(t) => handleInputChange('password', t)} />
+            <Input placeHolder='Email' value={data.email} keyBoardType='email-address' valueKey='email' onChangeText={handleInputChange} />
+            <Input placeHolder='Senha' value={data.password} keyBoardType='default' valueKey='password' password onChangeText={handleInputChange} />
 
             <Button text='Entrar' onPress={handleSignIn} />
 
-            <View style={styles.footer}>
-                <Text style={styles.registerText}>
-                    Não possui uma conta?
-                </Text>
-                <TouchableOpacity onPress={goToSignUp}>
-                    <Text style={styles.registerTextInside}> Registre-se aqui</Text>
-                </TouchableOpacity>
-            </View>
+            <Footer text='Não possui uma conta?' linkText='Registre-se aqui' onPress={goToSignUp} />
         </View>
     );
 }

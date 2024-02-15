@@ -16,10 +16,5 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 5
-    },
-    error: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 10
     }
 });

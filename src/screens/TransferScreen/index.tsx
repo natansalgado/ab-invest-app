@@ -1,64 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 
 import { styles } from './styles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/types';
-import * as homeActions from '../HomeScreen/actions';
+import { format, loadInfos } from '../../actions/actions';
 import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
+import { Balance } from '../../components/Balance';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Transfer'>
 
 export function TransferScreen({ navigation, route }: Props) {
     const { userToken, setUserToken } = route.params;
-    const [userData, setUserData] = useState<UserData>({
-        id: 0,
-        name: '',
-        role: ''
-    });
-    const [accountData, setAccountData] = useState<AccountData>({
-        id: 0,
-        balance: 0,
-        accountKey: '',
-        userId: 0
-    });
+    const [userData, setUserData] = useState<UserData | null>(null);
+    const [accountData, setAccountData] = useState<AccountData | null>(null);
     const [accountKey, setAccountKey] = useState('');
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
     const [disabled, setDisabled] = useState(true);
 
-    const handleValue = (value: string) => {
+    const handleValue = (key: any, value: string) => {
         value = value.replace(/[^0-9]/g, '');
-        setValue((Number(value) / 100).toString())
+        setValue((Number(value) / 100).toString());
     }
 
     const goToConfirmTransferScreen = () => {
-        navigation.navigate('ConfirmTransfer', { senderKey: accountData.accountKey, receiverKey: accountKey, value: Number(value), userToken })
+        navigation.navigate('ConfirmTransfer', { senderKey: accountData ? accountData.accountKey : '', receiverKey: accountKey, value: Number(value), userToken });
     }
 
     useEffect(() => {
-        homeActions.loadInfos(userToken, setUserToken, setUserData, setAccountData);
-    }, [])
+        loadInfos(userToken, setUserToken, setUserData, setAccountData);
+    }, []);
 
     useEffect(() => {
-        setDisabled(Number(value) <= 0 || !accountKey || Number(value) > accountData.balance);
-    }, [value, accountKey])
+        setDisabled(Number(value) <= 0 || !accountKey || Number(value) > (accountData ? accountData.balance : 0));
+    }, [value, accountKey]);
 
     return (
         <View style={styles.container}>
             <View style={styles.balanceContainer}>
-                <Text style={styles.balanceText}>Saldo atual</Text>
-                <Text style={styles.balanceText2}>{homeActions.format(accountData.balance)}</Text>
+                <Balance balance={accountData ? accountData.balance : 0} unavailable={(accountData ? accountData.balance : 0) < Number(value)} />
             </View>
 
-            <TextInput style={styles.input} placeholder='Chave da conta' value={accountKey} onChangeText={(t) => setAccountKey(t)} />
+            <Input placeHolder='Chave da conta' value={accountKey} valueKey='' keyBoardType='default' onChangeText={(k, v) => setAccountKey(v)} />
 
-            <TextInput
-                style={styles.input}
-                keyboardType='numeric'
-                value={homeActions.format(Number(value))}
-                onChangeText={(t) => handleValue(t)}
-                caretHidden={true}
-            />
+            <Input keyBoardType='numeric' value={format(Number(value))} valueKey='' unavailable={(accountData ? accountData.balance : 0) < Number(value)} onChangeText={handleValue} />
 
             <Button text='Continuar' disabled={disabled} onPress={goToConfirmTransferScreen} />
         </View>

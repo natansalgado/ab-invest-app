@@ -6,8 +6,9 @@ import { RootStackParamList } from "../types/types";
 import { HomeScreen } from "../screens/HomeScreen";
 import { TransferScreen } from "../screens/TransferScreen";
 import { View } from "react-native";
-import { themeColor } from "../screens/HomeScreen/styles";
 import { ConfirmTransfer } from "../screens/ConfirmTransfer";
+import { LogOutScreen } from "../screens/LogOutScreen";
+import { themeColor } from "../constants/colors";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -16,30 +17,23 @@ export function StackRoute() {
     const [userToken, setUserToken] = useState("");
 
     return (
-        <Navigator screenOptions={{ headerShown: false }}>
+        <Navigator screenOptions={{
+            headerShown: true,
+            headerTintColor: '#fff',
+            headerStyle: { backgroundColor: themeColor }
+        }}>
             {
                 !userToken ?
                     <>
-                        <Screen name='SignIn' component={SignInScreen} initialParams={{ setUserToken }} />
-                        <Screen name='SignUp' component={SignUpScreen} initialParams={{ setUserToken }} />
+                        <Screen name='LogOut' component={LogOutScreen} initialParams={{ setUserToken }} options={{ headerShown: false }} />
+                        <Screen name='SignIn' component={SignInScreen} initialParams={{ setUserToken }} options={{ headerShown: false }} />
+                        <Screen name='SignUp' component={SignUpScreen} initialParams={{ setUserToken }} options={{ headerShown: false }} />
                     </>
                     :
                     <>
-                        <Screen name='Home' component={HomeScreen} initialParams={{ userToken, setUserToken }} />
-                        <Screen name='Transfer' component={TransferScreen} initialParams={{ userToken, setUserToken }}
-                            options={{
-                                headerShown: true,
-                                title: 'Fazer transferência',
-                                headerTintColor: '#fff',
-                                headerStyle: { backgroundColor: themeColor }
-                            }} />
-                        <Screen name='ConfirmTransfer' component={ConfirmTransfer}
-                            options={{
-                                headerShown: true,
-                                title: 'Confirmar transferência',
-                                headerTintColor: '#fff',
-                                headerStyle: { backgroundColor: themeColor }
-                            }} />
+                        <Screen name='Home' component={HomeScreen} initialParams={{ userToken, setUserToken }} options={{ headerShown: false }} />
+                        <Screen name='Transfer' component={TransferScreen} initialParams={{ userToken, setUserToken }} options={{ title: 'Fazer transferência' }} />
+                        <Screen name='ConfirmTransfer' component={ConfirmTransfer} options={{ title: 'Confirmar transferência' }} />
                     </>
             }
         </Navigator>

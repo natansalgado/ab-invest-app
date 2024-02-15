@@ -6,8 +6,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/types';
 
 import * as actions from './actions';
-import * as homeActions from '../HomeScreen/actions';
+import { format } from '../../actions/actions';
 import { Button } from '../../components/Button';
+import { ErrorMessage } from '../../components/ErrorMessage';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ConfirmTransfer'>
 
@@ -36,16 +37,16 @@ export function ConfirmTransfer({ navigation, route }: Props) {
                         <Text style={styles.header}>Confirme os seguintes dados</Text>
                         <Text style={styles.label}>Chave da conta</Text>
                         <Text style={styles.value}>{receiverData.receiverKey}</Text>
-                        <Text style={styles.label}>Nome</Text>
+                        <Text style={styles.label}>Nome do destinatário</Text>
                         <Text style={styles.value}>{receiverData.receiverName}</Text>
                         <Text style={styles.label}>Valor</Text>
-                        <Text style={styles.value}>{homeActions.format(receiverData.value)}</Text>
+                        <Text style={styles.value}>{format(receiverData.value)}</Text>
                         <Button text='Confirmar' onPress={handleConfirmTransfer} />
                     </>
                     :
                     error &&
                     <>
-                        <Text style={styles.error}>{error}</Text>
+                        <ErrorMessage message={error} />
                         <Button text='Voltar' onPress={goBack} />
                     </>
             }

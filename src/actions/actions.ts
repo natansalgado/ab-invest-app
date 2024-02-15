@@ -1,8 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
-import { checkToken } from "../../api/checkToken";
-import { getAccountData as getAccount } from "../../api/getAccountData";
 
-export const loadInfos = async (token: string, setToken: Dispatch<SetStateAction<string>>, setUserData: Dispatch<SetStateAction<UserData>>, setAccountData: Dispatch<SetStateAction<AccountData>>) => {
+import { Dispatch, SetStateAction } from "react";
+import { checkToken } from "../api/checkToken";
+import { getAccountData as getAccount } from "../api/getAccountData";
+
+export const loadInfos = async (token: string, setToken: Dispatch<SetStateAction<string>>, setUserData: Dispatch<SetStateAction<UserData | null>>, setAccountData: Dispatch<SetStateAction<AccountData | null>>) => {
     try {
         const response = await checkToken(token);
 
