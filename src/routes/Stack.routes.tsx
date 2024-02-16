@@ -5,10 +5,12 @@ import { SignUpScreen } from "../screens/SignUpScreen";
 import { RootStackParamList } from "../types/types";
 import { HomeScreen } from "../screens/HomeScreen";
 import { TransferScreen } from "../screens/TransferScreen";
-import { View } from "react-native";
 import { ConfirmTransfer } from "../screens/ConfirmTransfer";
 import { LogOutScreen } from "../screens/LogOutScreen";
 import { themeColor } from "../constants/colors";
+import { TransferDoneScreen } from "../screens/TransferDoneScreen";
+import { UserInvestmentsScreen } from "../screens/UserInvestmentsScreen";
+import { BlankScreen } from "../screens/BlankScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -34,6 +36,9 @@ export function StackRoute() {
                         <Screen name='Home' component={HomeScreen} initialParams={{ userToken, setUserToken }} options={{ headerShown: false }} />
                         <Screen name='Transfer' component={TransferScreen} initialParams={{ userToken, setUserToken }} options={{ title: 'Fazer transferência' }} />
                         <Screen name='ConfirmTransfer' component={ConfirmTransfer} options={{ title: 'Confirmar transferência' }} />
+                        <Screen name='TransferDone' component={TransferDoneScreen} options={{ title: 'Transferência concluída' }} />
+                        <Screen name='UserInvestments' component={UserInvestmentsScreen} options={{ title: 'Investimentos' }} />
+                        <Screen name='Blank' component={BlankScreen} options={{ headerShown: false }} />
                     </>
             }
         </Navigator>

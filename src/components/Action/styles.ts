@@ -12,7 +12,8 @@ export const styles = StyleSheet.create({
         height: 80,
         borderRadius: 8,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderWidth: 2
     },
     buttonText: {
         marginTop: 5,

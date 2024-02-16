@@ -22,8 +22,8 @@ export function Actions({ navigation, route }: Props) {
         navigation.navigate('Transfer', { userToken, setUserToken });
     }
 
-    const goToInvestmentsScreen = () => {
-
+    const goToUserInvestmentsScreen = () => {
+        navigation.navigate('UserInvestments', { userToken, setUserToken })
     }
 
     return (
@@ -39,7 +39,7 @@ export function Actions({ navigation, route }: Props) {
                     <MaterialIcons name="pix" color="#fff" size={50}></MaterialIcons>
                 </Action>
 
-                <Action text='Investimentos' onPress={goToInvestmentsScreen}>
+                <Action text='Investimentos' onPress={goToUserInvestmentsScreen}>
                     <FontAwesome name="dollar" size={44} color="#fff" />
                 </Action>
             </View>

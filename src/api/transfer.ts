@@ -2,9 +2,9 @@ import axios from "axios";
 
 import { TRANSACTION_BASE_URL } from "../constants/api"
 
-export const checkAccountToTransfer = async (token: string, data: TransferData) => {
+export const transfer = async (token: string, data: TransferData) => {
     try {
-        return await axios.post(`${TRANSACTION_BASE_URL}/checkAccountToTransfer`, data, {
+        return await axios.post(`${TRANSACTION_BASE_URL}/transfer`, data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

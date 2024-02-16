@@ -4,11 +4,10 @@ import { errorColor } from '../../constants/colors';
 export const styles = StyleSheet.create({
     error: {
         backgroundColor: '#f8d7da',
-        marginBottom: 2,
-        paddingTop: 8,
-        padding: 5,
+        marginBottom: 6,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
         fontSize: 18,
-        textAlign: 'center',
         borderWidth: 2,
         borderRadius: 8,
         borderColor: "#f5c6cb",

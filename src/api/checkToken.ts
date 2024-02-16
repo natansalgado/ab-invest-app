@@ -1,10 +1,10 @@
 import axios from "axios";
 
-import { PROFILE_BASE_URL } from "../constants/api"
+import { AUTH_BASE_URL } from "../constants/api"
 
 export const checkToken = (token: string) => {
     try {
-        return axios.get(PROFILE_BASE_URL, {
+        return axios.get(`${AUTH_BASE_URL}/profile`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

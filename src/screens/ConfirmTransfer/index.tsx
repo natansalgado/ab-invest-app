@@ -17,8 +17,8 @@ export function ConfirmTransfer({ navigation, route }: Props) {
     const [receiverData, setReceiverData] = useState<ReceiverData | null>(null)
     const [error, setError] = useState('')
 
-    const handleConfirmTransfer = async () => {
-
+    const handleConfirmTransfer = () => {
+        actions.confirmTransfer(userToken, { senderKey, receiverKey, value }, setError, navigation)
     }
 
     const goBack = () => {
@@ -42,6 +42,7 @@ export function ConfirmTransfer({ navigation, route }: Props) {
                         <Text style={styles.label}>Valor</Text>
                         <Text style={styles.value}>{format(receiverData.value)}</Text>
                         <Button text='Confirmar' onPress={handleConfirmTransfer} />
+                        <Button text='Voltar' onPress={goBack} />
                     </>
                     :
                     error &&

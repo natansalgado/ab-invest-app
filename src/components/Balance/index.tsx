@@ -10,9 +10,9 @@ interface Props {
 
 export function Balance({ balance, unavailable }: Props) {
     return (
-        <View>
+        <>
             <Text style={styles.label}>Saldo atual</Text>
             <Text style={[styles.balance, unavailable && styles.unavailable]}>{format(balance)}</Text>
-        </View>
+        </>
     );
 }

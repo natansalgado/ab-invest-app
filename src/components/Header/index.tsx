@@ -8,10 +8,12 @@ interface Props {
     onPress: () => void;
 }
 
-export function Header({ name, onPress}: Props) {
+export function Header({ name, onPress }: Props) {
+    const firstName = name.split(" ")[0];
+
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Olá, {name}</Text>
+            <Text style={styles.text}>Olá, {firstName}</Text>
 
             <TouchableOpacity onPress={onPress}>
                 <FontAwesome name="gear" size={30} color="#fff" />

@@ -9,12 +9,21 @@ interface SetUserToken {
     setUserToken: Dispatch<SetStateAction<string>>;
 }
 
-interface ConfirmTransfer {
+interface Transfer {
     senderKey: string,
     receiverKey: string,
     value: number,
     userToken: string
 }
+
+interface TransferDone {
+    senderName: string;
+    senderKey: string;
+    receiverName: string;
+    receiverKey: string;
+    value: number;
+    date: Date;
+  }
 
 export type RootStackParamList = {
     LogOut: SetUserToken;
@@ -22,5 +31,8 @@ export type RootStackParamList = {
     SignUp: SetUserToken;
     Home: UserToken;
     Transfer: UserToken;
-    ConfirmTransfer: ConfirmTransfer;
+    ConfirmTransfer: Transfer;
+    TransferDone: TransferDone;
+    UserInvestments: UserToken;
+    Blank: UserToken;
 }
