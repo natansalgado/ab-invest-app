@@ -34,5 +34,5 @@ export type RootStackParamList = {
     ConfirmTransfer: Transfer;
     TransferDone: TransferDone;
     UserInvestments: UserToken;
-    Blank: UserToken;
+    Investments: undefined;
 }

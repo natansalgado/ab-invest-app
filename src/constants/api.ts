@@ -1,10 +1,14 @@
 
-export const USER_BASE_URL = "http://192.168.0.15:5000/api/User"
+const BASE_URL = 'http://192.168.0.15:5000';
 
-export const AUTH_BASE_URL = "http://192.168.0.15:5000/api/Auth"
+export const USER_BASE_URL = `${BASE_URL}/api/User`;
 
-export const ACCOUNT_BASE_URL = "http://192.168.0.15:5000/api/account"
+export const AUTH_BASE_URL = `${BASE_URL}/api/Auth`;
 
-export const TRANSACTION_BASE_URL = "http://192.168.0.15:5000/api/transaction"
+export const ACCOUNT_BASE_URL = `${BASE_URL}/api/account`;
 
-export const USERINVESTMENT_BASE_URL = "http://192.168.0.15:5000/api/UserInvestment"
+export const TRANSACTION_BASE_URL = `${BASE_URL}/api/transaction`;
+
+export const USERINVESTMENT_BASE_URL = `${BASE_URL}/api/UserInvestment`;
+
+export const INVESTMENT_BASE_URL = `${BASE_URL}/api/Investment`;

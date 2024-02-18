@@ -10,7 +10,7 @@ import { LogOutScreen } from "../screens/LogOutScreen";
 import { themeColor } from "../constants/colors";
 import { TransferDoneScreen } from "../screens/TransferDoneScreen";
 import { UserInvestmentsScreen } from "../screens/UserInvestmentsScreen";
-import { BlankScreen } from "../screens/BlankScreen";
+import { InvestmentsScreen } from "../screens/InvestmentsScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -37,8 +37,8 @@ export function StackRoute() {
                         <Screen name='Transfer' component={TransferScreen} initialParams={{ userToken, setUserToken }} options={{ title: 'Fazer transferência' }} />
                         <Screen name='ConfirmTransfer' component={ConfirmTransfer} options={{ title: 'Confirmar transferência' }} />
                         <Screen name='TransferDone' component={TransferDoneScreen} options={{ title: 'Transferência concluída' }} />
-                        <Screen name='UserInvestments' component={UserInvestmentsScreen} options={{ title: 'Investimentos' }} />
-                        <Screen name='Blank' component={BlankScreen} options={{ headerShown: false }} />
+                        <Screen name='UserInvestments' component={UserInvestmentsScreen} options={{ title: 'Meus investimentos' }} />
+                        <Screen name='Investments' component={InvestmentsScreen} options={{ title: 'Investimentos disponíveis' }} />
                     </>
             }
         </Navigator>

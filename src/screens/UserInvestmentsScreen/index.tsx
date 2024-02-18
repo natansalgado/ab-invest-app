@@ -21,6 +21,10 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
         navigation.goBack();
     }
 
+    const goToInvestmentsScreen = () => {
+        navigation.navigate('Investments');
+    }
+
     useEffect(() => {
         actions.loadInfos(userToken, setUserToken, setUserInvestments, setError)
     }, []);
@@ -39,13 +43,13 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
                         <UserInvestmentsContainer userInvestments={userInvestments} />
                         <View style={styles.container}>
                             <Text style={styles.label}>Fazer novo investimento</Text>
-                            <Button text='Ver investimentos disponíveis' onPress={() => { }} />
+                            <Button text='Ver investimentos disponíveis' onPress={goToInvestmentsScreen} />
                         </View>
                     </>
                     :
                     <View style={styles.container}>
                         <ErrorMessage message='Você não possui nenhum investimento no momento' />
-                        <Button text='Ver investimentos disponíveis' onPress={() => { }} />
+                        <Button text='Ver investimentos disponíveis' onPress={goToInvestmentsScreen} />
                     </View>
             }
         </>
