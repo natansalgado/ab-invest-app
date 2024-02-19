@@ -5,7 +5,7 @@ import * as sigInActions from '../SignInScreen/actions';
 
 type SetString = Dispatch<SetStateAction<string>>;
 
-export const signUp = async (data: SignUp, setError: SetString, setUserToken: SetString) => {
+export const signUp = async (data: SignUp, setError: SetString, setUserToken: SetString, setLoading: Dispatch<SetStateAction<boolean>>) => {
     const { name, email, phone, password, confirmPassword } = data;
 
     if (!name) return setError("Digite um nome válido")
@@ -14,13 +14,18 @@ export const signUp = async (data: SignUp, setError: SetString, setUserToken: Se
     if (!password) return setError("Digite uma senha válida")
     if (password !== confirmPassword) return setError("Utilize a mesma senha de cima")
 
+    setLoading(true);
+
     try {
         const response = await fetchSignUp(data);
 
-        if (response.status !== 200) setError(response);
+        if (response.status !== 200) {
+            setError(response);
+            setLoading(false);
+        }
 
         if (response.status == 200) {
-            sigInActions.signIn({ email, password }, setError, setUserToken);
+            sigInActions.signIn({ email, password }, setError, setUserToken, setLoading);
         }
     } catch (error: any) {
         setError("Erro ao tentar acessar o servidor");

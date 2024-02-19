@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as actions from './actions';
@@ -16,11 +16,12 @@ type Props = NativeStackScreenProps<RootStackParamList, 'SignIn'>
 
 export function SignInScreen({ navigation, route }: Props) {
     const { setUserToken } = route.params;
-    const [error, setError] = useState('');
     const [data, setData] = useState<SignIn>({
         email: "",
         password: ""
     });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const goToSignUp = () => {
         navigation.navigate('SignUp', { setUserToken });
@@ -35,21 +36,25 @@ export function SignInScreen({ navigation, route }: Props) {
     }
 
     const handleSignIn = async () => {
-        await actions.signIn(data, setError, setUserToken)
+        await actions.signIn(data, setError, setUserToken, setLoading);
     }
 
     return (
         <View style={styles.container}>
-            <Title text='Fazer Login'/>
+            {!loading &&
+                <>
+                    <Title text='Fazer Login' />
 
-            {error && <ErrorMessage message={error} />}
+                    {error && <ErrorMessage message={error} />}
 
-            <Input placeHolder='Email' value={data.email} keyBoardType='email-address' valueKey='email' onChangeText={handleInputChange} />
-            <Input placeHolder='Senha' value={data.password} keyBoardType='default' valueKey='password' password onChangeText={handleInputChange} />
+                    <Input placeHolder='Email' value={data.email} keyBoardType='email-address' valueKey='email' onChangeText={handleInputChange} />
+                    <Input placeHolder='Senha' value={data.password} keyBoardType='default' valueKey='password' password onChangeText={handleInputChange} />
 
-            <Button text='Entrar' onPress={handleSignIn} />
+                    <Button text='Entrar' onPress={handleSignIn} />
 
-            <Footer text='Não possui uma conta?' linkText='Registre-se aqui' onPress={goToSignUp} />
+                    <Footer text='Não possui uma conta?' linkText='Registre-se aqui' onPress={goToSignUp} />
+                </>
+            }
         </View>
     );
 }

@@ -24,9 +24,10 @@ export function SignUpScreen({ navigation, route }: Props) {
         confirmPassword: ''
     });
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSignUp = () => {
-        actions.signUp(data, setError, route.params?.setUserToken);
+        actions.signUp(data, setError, route.params?.setUserToken, setLoading);
     }
 
     const goToSignIn = () => {
@@ -46,19 +47,23 @@ export function SignUpScreen({ navigation, route }: Props) {
 
     return (
         <View style={styles.container}>
-            <Title text='Registrar' />
+            {!loading &&
+                <>
+                    <Title text='Registrar' />
 
-            {error && <ErrorMessage message={error} />}
+                    {error && <ErrorMessage message={error} />}
 
-            <Input placeHolder='Nome' keyBoardType='default' value={data.name} valueKey='name' onChangeText={handleInputChange} />
-            <Input placeHolder='Email' keyBoardType='email-address' value={data.email} valueKey='email' onChangeText={handleInputChange} />
-            <Input placeHolder='Número de Telefone' keyBoardType='phone-pad' value={data.phone} valueKey='phone' onChangeText={handleInputChange} />
-            <Input placeHolder='Senha' keyBoardType='default' value={data.password} password valueKey='password' onChangeText={handleInputChange} />
-            <Input placeHolder='Confirme a senha' keyBoardType='default' value={data.confirmPassword} password valueKey='confirmPassword' onChangeText={handleInputChange} />
+                    <Input placeHolder='Nome' keyBoardType='default' value={data.name} valueKey='name' onChangeText={handleInputChange} />
+                    <Input placeHolder='Email' keyBoardType='email-address' value={data.email} valueKey='email' onChangeText={handleInputChange} />
+                    <Input placeHolder='Número de Telefone' keyBoardType='phone-pad' value={data.phone} valueKey='phone' onChangeText={handleInputChange} />
+                    <Input placeHolder='Senha' keyBoardType='default' value={data.password} password valueKey='password' onChangeText={handleInputChange} />
+                    <Input placeHolder='Confirme a senha' keyBoardType='default' value={data.confirmPassword} password valueKey='confirmPassword' onChangeText={handleInputChange} />
 
-            <Button text='Criar conta' onPress={handleSignUp} />
+                    <Button text='Criar conta' onPress={handleSignUp} />
 
-            <Footer text='Já possui uma conta?' linkText='Entre aqui' onPress={goToSignIn} />
+                    <Footer text='Já possui uma conta?' linkText='Entre aqui' onPress={goToSignIn} />
+                </>
+            }
         </View>
     );
 }

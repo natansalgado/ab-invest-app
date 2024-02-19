@@ -31,7 +31,6 @@ export type RootStackParamList = {
     SignUp: SetUserToken;
     Home: UserToken;
     Transfer: UserToken;
-    ConfirmTransfer: Transfer;
     TransferDone: TransferDone;
     UserInvestments: UserToken;
     Investments: UserToken;

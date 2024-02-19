@@ -11,13 +11,14 @@ export const checkAccount = async (token: string, data: TransferData, setReceive
         const response = await checkAccountToTransfer(token, data);
         if (response.status !== 200) return setError(response);
 
+        setError('');
         setReceiverData(response.data);
     } catch (error: any) {
         setError("Erro ao tentar acessar o servidor");
     }
 }
 
-export const confirmTransfer = async (token: string, data: TransferData, setError: SetError, navigation: NativeStackNavigationProp<RootStackParamList, "ConfirmTransfer", undefined>) => {
+export const confirmTransfer = async (token: string, data: TransferData, setError: SetError, navigation: NativeStackNavigationProp<RootStackParamList, "Transfer", undefined>) => {
     try {
         const response = await transfer(token, data);
         if (response.status !== 200) return setError(response);
