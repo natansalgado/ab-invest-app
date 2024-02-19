@@ -1,10 +1,9 @@
 import axios from "axios";
+import { USERINVESTMENT_BASE_URL } from "../constants/api";
 
-import { AUTH_BASE_URL } from "../constants/api"
-
-export const checkToken = async (token: string) => {
+export const getUserInvestment = async (token: string, id: number) => {
     try {
-        return await axios.get(`${AUTH_BASE_URL}/profile`, {
+        return await axios.get(`${USERINVESTMENT_BASE_URL}/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

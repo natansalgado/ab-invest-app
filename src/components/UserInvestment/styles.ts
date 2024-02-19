@@ -5,18 +5,15 @@ export const styles = StyleSheet.create({
         width: 150,
     },
     title: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 'bold'
     },
-    label: {
-        fontSize: 16,
-    },
     text: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold'
     },
     yielded: {
-        fontSize: 16,
+        fontSize: 14,
         color: '#00aa00',
         fontWeight: 'bold'
     }

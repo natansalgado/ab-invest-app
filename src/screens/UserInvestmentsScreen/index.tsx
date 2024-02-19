@@ -25,8 +25,8 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
     const goToInvestmentsScreen = () => {
         navigation.navigate('Investments', { userToken, setUserToken });
     }
-    const goToUserInvestmentScreen = () => {
-        navigation.navigate('Investments', { userToken, setUserToken });
+    const goToUserInvestmentScreen = (id: number) => {
+        navigation.navigate('UserInvestment', { userToken, setUserToken, id });
     }
 
     const onRefresh = useCallback(() => {

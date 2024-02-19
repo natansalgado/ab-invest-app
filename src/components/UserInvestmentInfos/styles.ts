@@ -8,6 +8,11 @@ export const styles = StyleSheet.create({
         paddingBottom: 5,
         marginBottom: 10
     },
+    name: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 5
+    },
     label: {
         fontSize: 16
     },
@@ -16,7 +21,9 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 5
     },
-    unavailable: {
-        color: errorColor
-    },
+    yielded: {
+        fontSize: 18,
+        color: '#00aa00',
+        fontWeight: 'bold'
+    }
 });

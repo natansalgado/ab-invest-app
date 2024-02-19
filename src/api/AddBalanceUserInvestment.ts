@@ -1,9 +1,9 @@
 import axios from "axios";
 import { USERINVESTMENT_BASE_URL } from "../constants/api";
 
-export const getUserInvestments = async (token: string, accountId: number) => {
+export const addBalanceUserInvestment = async (token: string, id: number, value: number) => {
     try {
-        return await axios.get(`${USERINVESTMENT_BASE_URL}/account/${accountId}`, {
+        return await axios.put(`${USERINVESTMENT_BASE_URL}/AddBalance/${id}/${value}`, null, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

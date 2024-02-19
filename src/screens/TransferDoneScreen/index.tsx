@@ -16,7 +16,6 @@ export function TransferDoneScreen({ navigation, route }: Props) {
     const goBack = () => {
         navigation.goBack();
         navigation.goBack();
-        navigation.goBack();
     }
 
     return (
