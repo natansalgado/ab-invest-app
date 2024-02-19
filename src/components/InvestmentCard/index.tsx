@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
 import { format } from '../../actions/actions';
+import { Button } from '../Button';
 
 interface Props {
     investment: Investment;
@@ -13,17 +14,12 @@ export function InvestmentCard({ investment, onPress }: Props) {
     const { id, name, annualPercentage, minMonths, minValue } = investment;
 
     return (
-        <TouchableOpacity style={styles.container} onPress={() => onPress(id)}>
+        <View style={styles.container}>
             <Text style={styles.name}>{name}</Text>
 
-            <Text style={styles.label}>Porcentagem de ganho anual</Text>
-            <Text style={styles.text}>{annualPercentage}%</Text>
+            <Text style={styles.label}><Text style={styles.text}>{annualPercentage}%</Text> de Ganho anual</Text>
 
-            <Text style={styles.label}>Valor mínimo de depósito inicial</Text>
-            <Text style={styles.text}>{format(minValue)}</Text>
-
-            <Text style={styles.label}>Saque disponível em</Text>
-            <Text style={styles.text}>{minMonths} meses</Text>
-        </TouchableOpacity>
+            <Button text='Ver mais detalhes' onPress={() => onPress(id)} />
+        </View>
     );
 }

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { themeColor } from '../../constants/colors';
+import { cancelColor, themeColor } from '../../constants/colors';
 
 export const styles = StyleSheet.create({
     container: {
@@ -13,9 +13,13 @@ export const styles = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: "#fff",
-        textAlign: 'center'
+        textAlign: 'center',
+        width: '100%'
     },
     buttonDisabled: {
         opacity: 0.4
     },
+    cancel: {
+        backgroundColor: cancelColor
+    }
 });

@@ -7,9 +7,10 @@ import { UserInvestment } from '../UserInvestment';
 interface Props {
     userInvestments: UserInvestment[];
     navigate?: () => void;
+    onPress: (id: number) => void;
 }
 
-export function UserInvestmentsContainer({ userInvestments }: Props) {
+export function UserInvestmentsContainer({ userInvestments, onPress }: Props) {
     return (
         <View style={styles.container}>
             <Text style={styles.label}>Meus Investimentos</Text>
@@ -17,7 +18,7 @@ export function UserInvestmentsContainer({ userInvestments }: Props) {
             <ScrollView horizontal style={styles.scroll} showsHorizontalScrollIndicator={false}>
                 <View style={styles.insiderContainer}>
                     {userInvestments.map((data, i) =>
-                        <UserInvestment key={i} data={data} />
+                        <UserInvestment key={i} data={data} onPress={() => onPress(data.id)} />
                     )}
                 </View>
             </ScrollView>

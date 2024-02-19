@@ -41,7 +41,10 @@ export function HomeScreen({ navigation, route }: Props) {
         <SafeAreaView>
             <StatusBar style='light' />
             <Header name={userData ? userData.name : ''} onPress={goToSettings} />
-            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+            >
 
                 <View style={styles.field}>
                     <Balance balance={accountData ? accountData.balance : 0} />

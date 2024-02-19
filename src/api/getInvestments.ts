@@ -5,6 +5,6 @@ export const getInvestments = async () => {
     try {
         return await axios.get(INVESTMENT_BASE_URL);
     } catch (error: any) {
-        return error.response.data
+        return error.response.data;
     }
 }

@@ -4,19 +4,23 @@ import { View, Text } from 'react-native';
 import { styles } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { format as moneyFormat } from '../../actions/actions';
+import { Button } from '../Button';
 
 interface Props {
-    data: UserInvestment
+    data: UserInvestment;
+    onPress: () => void;
 }
 
-export function UserInvestment({ data }: Props) {
+export function UserInvestment({ data, onPress }: Props) {
     return (
-        <TouchableOpacity style={styles.container}>
+        <View style={styles.container}>
             <Text numberOfLines={1} ellipsizeMode='tail' style={styles.title}>{data.name}</Text>
 
             <Text numberOfLines={1} style={styles.text}>{moneyFormat(data.balance)}</Text>
 
             <Text numberOfLines={1} style={styles.yielded}>{moneyFormat(data.balance - data.initialValue)} ^</Text>
-        </TouchableOpacity>
+
+            <Button text='Detalhes' onPress={onPress} />
+        </View>
     );
 }

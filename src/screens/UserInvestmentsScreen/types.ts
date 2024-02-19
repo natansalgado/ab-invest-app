@@ -7,11 +7,5 @@ interface UserInvestment {
     investmentId: number;
     startDate: Date;
     endDate: Date;
-    investment: {
-        id: number;
-        name: string;
-        minValue: number;
-        minMonths: number;
-        annualPercentage: number;
-    }
+    investment: Investment
 }

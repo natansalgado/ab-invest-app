@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { RefreshControl, ScrollView, Text, View } from 'react-native';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types/types';
 import { styles } from './styles';
-import * as actions from './actions';
+import { loadInfos } from './actions';
 import { Button } from '../../components/Button';
 import { UserInvestmentsContainer } from '../../components/UserInvestmentsContainer';
 import { ErrorMessage } from '../../components/ErrorMessage';
@@ -16,21 +16,37 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
     const { userToken, setUserToken } = route.params;
     const [userInvestments, setUserInvestments] = useState<UserInvestment[]>([]);
     const [error, setError] = useState('');
+    const [refreshing, setRefreshing] = useState(false)
 
     const goBack = () => {
         navigation.goBack();
     }
 
     const goToInvestmentsScreen = () => {
-        navigation.navigate('Investments');
+        navigation.navigate('Investments', { userToken, setUserToken });
+    }
+    const goToUserInvestmentScreen = () => {
+        navigation.navigate('Investments', { userToken, setUserToken });
     }
 
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+
+        setTimeout(() => {
+            setRefreshing(false);
+            loadInfos(userToken, setUserToken, setUserInvestments, setError)
+        }, 1000);
+    }, []);
+
     useEffect(() => {
-        actions.loadInfos(userToken, setUserToken, setUserInvestments, setError)
+        loadInfos(userToken, setUserToken, setUserInvestments, setError)
     }, []);
 
     return (
-        <>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        >
             {error ?
                 <>
                     <ErrorMessage message={error} />
@@ -40,7 +56,9 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
                 userInvestments.length > 0 ?
                     <>
                         <TotalUserInvestments userInvestments={userInvestments} />
-                        <UserInvestmentsContainer userInvestments={userInvestments} />
+
+                        <UserInvestmentsContainer userInvestments={userInvestments} onPress={goToUserInvestmentScreen} />
+
                         <View style={styles.container}>
                             <Text style={styles.label}>Fazer novo investimento</Text>
                             <Button text='Ver investimentos disponíveis' onPress={goToInvestmentsScreen} />
@@ -52,6 +70,6 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
                         <Button text='Ver investimentos disponíveis' onPress={goToInvestmentsScreen} />
                     </View>
             }
-        </>
+        </ScrollView>
     );
 }

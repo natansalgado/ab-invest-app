@@ -23,7 +23,7 @@ interface TransferDone {
     receiverKey: string;
     value: number;
     date: Date;
-  }
+}
 
 export type RootStackParamList = {
     LogOut: SetUserToken;
@@ -34,5 +34,7 @@ export type RootStackParamList = {
     ConfirmTransfer: Transfer;
     TransferDone: TransferDone;
     UserInvestments: UserToken;
-    Investments: undefined;
+    Investments: UserToken;
+    Investment: { investment: Investment, userToken: string, setUserToken: Dispatch<SetStateAction<string>> }
+    InvestmentDone: { error?: string, userToken: string, setUserToken: Dispatch<SetStateAction<string>> }
 }

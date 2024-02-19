@@ -9,6 +9,6 @@ export const getAccountData = async (userId: number, token: string) => {
             }
         })
     } catch (error: any) {
-        return error.response.data
+        return error.response.data;
     }
 }

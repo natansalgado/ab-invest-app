@@ -6,12 +6,13 @@ interface Props {
     text: string;
     disabled?: boolean;
     onPress: () => void;
+    cancel?: boolean
 }
 
-export function Button({ text, onPress, disabled }: Props) {
+export function Button({ text, onPress, disabled, cancel }: Props) {
     return (
         <TouchableOpacity
-            style={[styles.container, disabled && styles.buttonDisabled]}
+            style={[styles.container, cancel && styles.cancel, disabled && styles.buttonDisabled]}
             onPress={onPress}
             disabled={disabled}
         >

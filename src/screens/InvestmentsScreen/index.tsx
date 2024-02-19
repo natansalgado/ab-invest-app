@@ -11,7 +11,8 @@ import { InvestmentCard } from '../../components/InvestmentCard';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Investments'>
 
-export function InvestmentsScreen({ navigation }: Props) {
+export function InvestmentsScreen({ navigation, route }: Props) {
+    const { userToken, setUserToken } = route.params;
     const [investments, setInvestments] = useState<Investment[]>([]);
     const [error, setError] = useState('');
 
@@ -19,8 +20,8 @@ export function InvestmentsScreen({ navigation }: Props) {
         navigation.goBack();
     }
 
-    const goToInvestmentScreen = (id: number) => {
-        
+    const goToInvestmentScreen = (investment: Investment) => {
+        navigation.navigate('Investment', { investment, userToken, setUserToken})
     }
 
     useEffect(() => {
@@ -35,12 +36,12 @@ export function InvestmentsScreen({ navigation }: Props) {
                 investments.length > 0 ?
                     <ScrollView>{
                         investments.map((investiment, i) => (
-                            <InvestmentCard investment={investiment} key={i} onPress={goToInvestmentScreen} />
+                            <InvestmentCard investment={investiment} key={i} onPress={() => goToInvestmentScreen(investiment)} />
                         ))}
                     </ScrollView>
                     :
                     <View>
-                        <ErrorMessage message='No momento não temos nenhum investimento disponível. Tente novamente mais tarde' />
+                        <ErrorMessage message='No momento não há nenhum investimento disponível. Tente novamente mais tarde' />
                         <Button text='Voltar' onPress={goBack} />
                     </View>
             }
