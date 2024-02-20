@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function InvestmentCard({ investment, onPress }: Props) {
-    const { id, name, annualPercentage, minMonths, minValue } = investment;
+    const { id, name, annualPercentage } = investment;
 
     return (
         <View style={styles.container}>

@@ -30,6 +30,10 @@ export function UserInvestmentScreen({ navigation, route }: Props) {
         navigation.navigate('AddBalanceUserInvestment', { userToken, setUserToken, id, userInvestment })
     }
 
+    const goWithdrawScreen = () => {
+        navigation.navigate('Withdraw', { userInvestment, userToken, setUserToken })
+    }
+
     const goBack = () => {
         navigation.goBack();
     }
@@ -52,7 +56,7 @@ export function UserInvestmentScreen({ navigation, route }: Props) {
                         <InvestmentInfos investment={userInvestment?.investment} value={0} />
 
                         <Button text='Adicionar' onPress={goAddScreen} />
-                        <Button text='Sacar' cancel onPress={() => { }} disabled={new Date() < new Date(userInvestment.endDate)} />
+                        <Button text='Sacar' cancel onPress={goWithdrawScreen} disabled={new Date() < new Date(userInvestment.endDate)} />
                     </>
                     :
                     <>

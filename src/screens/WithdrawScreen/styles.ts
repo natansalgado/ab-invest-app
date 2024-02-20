@@ -9,19 +9,22 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 10
     },
+    warning: {
+        fontSize: 16,
+        color: errorColor,
+        fontWeight: 'bold'
+    },
+    value: {
+        fontSize: 22,
+        fontWeight: 'bold'
+    },
     unavailable: {
         color: errorColor
-    },
-    links: {
-        flexDirection: 'row',
-        gap: 10,
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        marginBottom: 5
     },
     link: {
         color: themeColor,
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 5
     }
 });

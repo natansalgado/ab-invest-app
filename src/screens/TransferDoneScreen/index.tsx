@@ -32,7 +32,7 @@ export function TransferDoneScreen({ navigation, route }: Props) {
             <Text style={styles.value}>{formatMoney(value)}</Text>
 
             <Text style={styles.label}>Data da transferência</Text>
-            <Text style={styles.value}>{formatDate(date, 'dd/MM/yyyy')}</Text>
+            <Text style={styles.value}>{formatDate(date, 'dd/MM/yyyy - HH:mm')}</Text>
 
             <Button text='Sair' onPress={goBack} />
         </View>

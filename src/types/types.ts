@@ -33,6 +33,18 @@ interface Deposit {
     accountId: number,
 }
 
+interface Withdraw {
+    id: number;
+    initialValue: number;
+    balance: number;
+    withdrewValue: number;
+    accountId: number;
+    investmentId: number;
+    startDate: Date;
+    endDate: Date;
+    withdrawDate: Date;
+}
+
 interface UserInvestmentScreen extends UserToken {
     id: number;
 }
@@ -51,14 +63,16 @@ export type RootStackParamList = {
     SignUp: SetUserToken;
     Home: UserToken;
     Deposit: UserToken;
-    DepositDone: { error?: string;  deposit?: Deposit; };
+    DepositDone: { error?: string; deposit?: Deposit; };
     Transfer: UserToken;
     TransferDone: TransferDone;
     UserInvestments: UserToken;
     Investments: UserToken;
-    Investment: { investment: Investment; userToken: string; setUserToken: Dispatch<SetStateAction<string>> }
-    InvestmentDone: { error?: string; userToken: string; setUserToken: Dispatch<SetStateAction<string>> }
+    Investment: { investment: Investment; userToken: string; setUserToken: Dispatch<SetStateAction<string>>; };
+    InvestmentDone: { error?: string; userToken: string; setUserToken: Dispatch<SetStateAction<string>>; };
     UserInvestment: UserInvestmentScreen;
     AddBalanceUserInvestment: AddBalanceUserInvestment;
     AddBalanceUserInvestmentDone: AddBalanceDone;
+    Withdraw: { userInvestment: UserInvestment | null; userToken: string; setUserToken: Dispatch<SetStateAction<string>>; };
+    WithdrawDone: { error?: string; withdraw?: Withdraw; };
 }

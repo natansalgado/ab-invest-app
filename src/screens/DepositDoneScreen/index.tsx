@@ -32,7 +32,7 @@ export function DepositDoneScreen({ navigation, route }: Props) {
                     <Text style={styles.value}>{deposit.paymentMethod}</Text>
 
                     <Text style={styles.label}>Data</Text>
-                    <Text style={styles.value}>{formatDate(deposit.date, 'dd/MM/yyyy')}</Text>
+                    <Text style={styles.value}>{formatDate(deposit.date, 'dd/MM/yyyy - HH:mm')}</Text>
 
                     <Button text='Sair' onPress={goBack} />
                 </>

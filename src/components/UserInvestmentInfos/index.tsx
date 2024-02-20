@@ -25,10 +25,10 @@ export function UserInvestmentInfos({ userInvestment }: Props) {
             <Text style={styles.text}>{moneyFormat(initialValue)}</Text>
 
             <Text style={styles.label}>Data de criação</Text>
-            <Text style={styles.text}>{dateFormat(startDate, 'dd/MM/yyyy')}</Text>
+            <Text style={styles.text}>{dateFormat(startDate, 'dd/MM/yyyy - HH:mm')}</Text>
 
             <Text style={styles.label}>Saque disponível</Text>
-            <Text style={styles.text}>{dateFormat(endDate, 'dd/MM/yyyy')}</Text>
+            <Text style={styles.text}>{dateFormat(endDate, 'dd/MM/yyyy - HH:mm')}</Text>
         </View>
     );
 }

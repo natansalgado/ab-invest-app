@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, RefreshControl, ScrollView, Text } from 'react-native';
+import { Modal, RefreshControl, ScrollView, Text, TouchableOpacity } from 'react-native';
 
 import * as actions from './actions';
 import { styles } from './styles';
@@ -59,6 +59,10 @@ export function AddBalanceUserInvestmentScreen({ navigation, route }: Props) {
                     <Balance balance={accountData?.balance} unavailable={accountData.balance < value} />
 
                     <Input keyBoardType='numeric' value={format(value)} valueKey='' unavailable={accountData.balance < value} onChangeText={handleChangeText} />
+
+                    <TouchableOpacity onPress={() => setValue(accountData.balance)}>
+                        <Text style={styles.link}>Todo saldo</Text>
+                    </TouchableOpacity>
 
                     <Button text='Adicionar' onPress={() => setModalOpen(true)} disabled={!value || accountData.balance < value} />
 

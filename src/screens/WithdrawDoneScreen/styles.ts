@@ -1,18 +1,19 @@
 import { StyleSheet } from 'react-native';
-import { themeColor } from '../../constants/colors';
 
 export const styles = StyleSheet.create({
     container: {
-        padding: 15,
+        padding: 20
     },
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 5
+    header: {
+        fontSize: 20,
+        marginBottom: 10,
+        fontWeight: 'bold'
     },
-    link: {
-        color: themeColor,
+    label: {
         fontSize: 16,
+    },
+    value: {
+        fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 5
     }

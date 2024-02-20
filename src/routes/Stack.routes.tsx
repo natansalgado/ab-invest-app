@@ -17,6 +17,8 @@ import { AddBalanceUserInvestmentScreen } from "../screens/AddBalanceUserInvestm
 import { AddBalanceUserInvestmentDoneScreen } from "../screens/AddBalanceUserInvestmentDoneScreen";
 import { DepositScreen } from "../screens/DepositScreen";
 import { DepositDoneScreen } from "../screens/DepositDoneScreen";
+import { WithdrawScreen } from "../screens/WithdrawScreen";
+import { WithDrawDoneScreen } from "../screens/WithdrawDoneScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -51,6 +53,8 @@ export function StackRoute() {
                         <Screen name='UserInvestment' component={UserInvestmentScreen} options={{ title: 'Meu Investimento' }} />
                         <Screen name='AddBalanceUserInvestment' component={AddBalanceUserInvestmentScreen} options={{ title: 'Adicionar Saldo' }} />
                         <Screen name='AddBalanceUserInvestmentDone' component={AddBalanceUserInvestmentDoneScreen} options={{ title: '' }} />
+                        <Screen name='Withdraw' component={WithdrawScreen} options={{ title: 'Sacar' }} />
+                        <Screen name='WithdrawDone' component={WithDrawDoneScreen} options={{ title: '' }} />
                     </>
             }
         </Navigator>
