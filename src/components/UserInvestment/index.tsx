@@ -18,7 +18,7 @@ export function UserInvestment({ data, onPress }: Props) {
 
             <Text numberOfLines={1} style={styles.text}>{moneyFormat(data.balance)}</Text>
 
-            <Text numberOfLines={1} style={styles.yielded}>{moneyFormat(data.balance - data.initialValue)} ^</Text>
+            <Text numberOfLines={1} style={styles.yielded}>{moneyFormat(data.balance - data.initialValue - data.addedValue)} ^</Text>
 
             <Button text='Detalhes' onPress={onPress} />
         </View>

@@ -10,7 +10,7 @@ interface Props {
 }
 
 export function UserInvestmentInfos({ userInvestment }: Props) {
-    const { id, name, balance, initialValue, endDate, startDate } = userInvestment;
+    const { name, balance, initialValue, endDate, startDate, addedValue } = userInvestment;
     return (
         <View style={styles.container}>
             <Text style={styles.name}>{name}</Text>
@@ -19,10 +19,13 @@ export function UserInvestmentInfos({ userInvestment }: Props) {
             <Text style={styles.text}>{moneyFormat(balance)}</Text>
 
             <Text style={styles.label}>Valor rendido</Text>
-            <Text style={styles.yielded}>{moneyFormat(balance - initialValue)}^</Text>
+            <Text style={styles.yielded}>{moneyFormat(balance - initialValue - addedValue)}^</Text>
 
             <Text style={styles.label}>Valor inicial</Text>
             <Text style={styles.text}>{moneyFormat(initialValue)}</Text>
+
+            <Text style={styles.label}>Valor adicionado desde a criação</Text>
+            <Text style={styles.text}>{moneyFormat(addedValue)}</Text>
 
             <Text style={styles.label}>Data de criação</Text>
             <Text style={styles.text}>{dateFormat(startDate, 'dd/MM/yyyy - HH:mm')}</Text>
