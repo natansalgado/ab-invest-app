@@ -20,17 +20,23 @@ export function ConfirmTransfer({ receiverData, error, confirm, cancel }: Props)
             <FakeHeader />
             <View style={styles.container}>
                 {
-                    !error && receiverData ?
+                    !error ?
                         <>
-                            <Text style={styles.header}>Confirme os seguintes dados</Text>
+                            <Text style={styles.title}>Confirme os seguintes dados</Text>
+
                             <Text style={styles.label}>Chave da conta</Text>
-                            <Text style={styles.value}>{receiverData.receiverKey}</Text>
+                            <Text style={styles.value}>{receiverData?.receiverKey}</Text>
+
                             <Text style={styles.label}>Nome do destinatário</Text>
-                            <Text style={styles.value}>{receiverData.receiverName}</Text>
+                            <Text style={styles.value}>{receiverData?.receiverName}</Text>
+
                             <Text style={styles.label}>Valor</Text>
-                            <Text style={styles.value}>{format(receiverData.value)}</Text>
-                            <Button text='Confirmar' onPress={confirm} />
-                            <Button text='Cancelar' onPress={cancel} cancel />
+                            <Text style={styles.value}>{format(receiverData?.value || 0)}</Text>
+
+                            <View style={styles.buttons}>
+                                <Button text='Confirmar' onPress={confirm} />
+                                <Button text='Cancelar' onPress={cancel} cancel />
+                            </View>
                         </>
                         :
                         <>

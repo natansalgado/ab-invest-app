@@ -15,7 +15,7 @@ export function Actions({ navigation, route }: Props) {
     const { userToken, setUserToken } = route.params;
 
     const goToDepositScreen = () => {
-
+        navigation.navigate('Deposit', { userToken, setUserToken });
     }
 
     const goToTransferScreen = () => {

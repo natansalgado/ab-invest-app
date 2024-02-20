@@ -66,7 +66,8 @@ export function UserInvestmentsScreen({ navigation, route }: Props) {
                     </>
                     :
                     <View style={styles.container}>
-                        <ErrorMessage message='Você não possui nenhum investimento no momento' />
+                        <Text style={styles.none}>Você não possui nenhum investimento no momento...</Text>
+                        <Text style={styles.label}>Fazer novo investimento</Text>
                         <Button text='Ver investimentos disponíveis' onPress={goToInvestmentsScreen} />
                     </View>
             }

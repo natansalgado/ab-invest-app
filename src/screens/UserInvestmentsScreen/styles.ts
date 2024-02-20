@@ -10,10 +10,9 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 5
     },
-    label2: {
+    none: {
         fontSize: 18,
-        marginTop: 10,
-        marginBottom: 5
+        marginBottom: 20,
+        color: '#444'
     }
-    
 });

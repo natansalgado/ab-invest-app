@@ -15,6 +15,8 @@ import { InvestmentDoneScreen } from "../screens/InvestmentDoneScreen";
 import { UserInvestmentScreen } from "../screens/UserInvestmentScreen";
 import { AddBalanceUserInvestmentScreen } from "../screens/AddBalanceUserInvestmentScreen";
 import { AddBalanceUserInvestmentDoneScreen } from "../screens/AddBalanceUserInvestmentDoneScreen";
+import { DepositScreen } from "../screens/DepositScreen";
+import { DepositDoneScreen } from "../screens/DepositDoneScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -38,8 +40,10 @@ export function StackRoute() {
                     :
                     <>
                         <Screen name='Home' component={HomeScreen} initialParams={{ userToken, setUserToken }} options={{ headerShown: false }} />
-                        <Screen name='Transfer' component={TransferScreen} initialParams={{ userToken, setUserToken }} options={{ title: 'Fazer Transferência' }} />
-                        <Screen name='TransferDone' component={TransferDoneScreen} options={{ title: 'Transferência Concluída' }} />
+                        <Screen name='Deposit' component={DepositScreen} options={{ title: 'Fazer Depósito' }} />
+                        <Screen name='DepositDone' component={DepositDoneScreen} options={{ title: '' }} />
+                        <Screen name='Transfer' component={TransferScreen} options={{ title: 'Fazer Transferência' }} />
+                        <Screen name='TransferDone' component={TransferDoneScreen} options={{ title: '' }} />
                         <Screen name='UserInvestments' component={UserInvestmentsScreen} options={{ title: 'Meus Investimentos' }} />
                         <Screen name='Investments' component={InvestmentsScreen} options={{ title: 'Investimentos Disponíveis' }} />
                         <Screen name='Investment' component={InvestmentScreen} options={{ title: 'Investimento' }} />

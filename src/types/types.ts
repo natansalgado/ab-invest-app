@@ -25,6 +25,14 @@ interface TransferDone {
     date: Date;
 }
 
+interface Deposit {
+    id: number,
+    date: Date,
+    value: number,
+    paymentMethod: string,
+    accountId: number,
+}
+
 interface UserInvestmentScreen extends UserToken {
     id: number;
 }
@@ -42,12 +50,14 @@ export type RootStackParamList = {
     SignIn: SetUserToken;
     SignUp: SetUserToken;
     Home: UserToken;
+    Deposit: UserToken;
+    DepositDone: { error?: string;  deposit?: Deposit; };
     Transfer: UserToken;
     TransferDone: TransferDone;
     UserInvestments: UserToken;
     Investments: UserToken;
-    Investment: { investment: Investment, userToken: string, setUserToken: Dispatch<SetStateAction<string>> }
-    InvestmentDone: { error?: string, userToken: string, setUserToken: Dispatch<SetStateAction<string>> }
+    Investment: { investment: Investment; userToken: string; setUserToken: Dispatch<SetStateAction<string>> }
+    InvestmentDone: { error?: string; userToken: string; setUserToken: Dispatch<SetStateAction<string>> }
     UserInvestment: UserInvestmentScreen;
     AddBalanceUserInvestment: AddBalanceUserInvestment;
     AddBalanceUserInvestmentDone: AddBalanceDone;

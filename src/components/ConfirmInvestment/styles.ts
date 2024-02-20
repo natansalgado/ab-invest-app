@@ -5,15 +5,15 @@ export const styles = StyleSheet.create({
         padding: 15
     },
     title: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
         marginBottom: 10
     },
     label: {
-        fontSize: 20
+        fontSize: 16
     },
     value: {
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 5
     },

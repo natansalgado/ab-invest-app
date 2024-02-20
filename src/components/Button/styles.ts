@@ -11,10 +11,12 @@ export const styles = StyleSheet.create({
         borderRadius: 8
     },
     buttonText: {
-        fontSize: 20,
+        fontSize: 18,
         color: "#fff",
         textAlign: 'center',
-        width: '100%'
+        width: '100%',
+        textTransform: 'uppercase',
+        fontWeight: 'bold'
     },
     buttonDisabled: {
         opacity: 0.4
