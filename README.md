@@ -50,7 +50,8 @@ An investment bank app, where you can make deposits, transfers and investments t
 <img src="https://github.com/natansalgado/ab-invest-app/assets/118204748/27ed1704-d58f-4f53-99bc-a9ee14e4f058" width="200" alt="invests 3">
 <img src="https://github.com/natansalgado/ab-invest-app/assets/118204748/01c5e43a-3880-43f5-bad3-61e7d55ca9cc" width="200" alt="invests 4">
 
-
+## Tecnologies
+#### .NET 6, ASP.NET, EntityFramework, Authentication, Quartz, SQL Server, Docker, React Native
 
 
 
